@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART PARKING — รับบัตรจอดรถ</title>
+
+<script>
+  (function(){
+    try{
+      var saved = localStorage.getItem("sp-theme");
+      var theme = saved || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      if(theme === "dark") document.documentElement.setAttribute("data-theme", "dark");
+    }catch(e){}
+  })();
+</script>
+
+<!-- PyScript is loaded lazily after first paint (see app.js) to avoid blocking the
+     initial render/animation on mobile — see loadPyscriptDeferred() -->
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Taviraj:wght@600;700&family=Chakra+Petch:wght@400;500;600;700&family=Caveat:wght@600&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- External Stylesheet -->
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+      <span id="themeIcon">🌙</span>
+    </button>
+    <button class="lang-toggle" id="langToggle" type="button" aria-label="Toggle language">
+      <span id="langLabel">EN</span>
+    </button>
+  </div>
+  <div id="view"></div>
+</div>
+
+<!-- Application script, loaded from external file -->
+<script src="app.js"></script>
+</body>
+</html>
